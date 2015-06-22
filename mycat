@@ -1,3 +1,11 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-${0:a:h}/mycat.sed | ${0:a:h}/grcat ${0:a:h}/mysql.grcat | less -S -R -M;
+if [[ $OSTYPE == "linux-gnu" ]]; then
+	sed -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -R -M;
+else
+    if [[ $OSTYPE == "freebsd"* || $OSTYPE == "darwin"* ]]; then
+		gsed -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -R -M; 
+    fi
+fi
+
+echo "$( dirname "${BASH_SOURCE[0]}" )"

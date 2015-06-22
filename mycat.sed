@@ -1,4 +1,4 @@
-#!/bin/sed -f
+#!/usr/bin/env sed -f
 s!^|!║!g;s!|$!║!g;s!|!│!g;
 /^+/bp;b
 :p x;/^╔/bm;/^╟/bl
