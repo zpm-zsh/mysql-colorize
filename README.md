@@ -17,3 +17,6 @@ source ~/.bash/mysql-colorize/mysql-colorize.bash
 
 Now your mysql-client output look like this
 ![Mysql-client](https://raw.githubusercontent.com/horosgrisa/mysql-colorize/master/screenshot.png)
+
+
+#### If you use FreeBSD or Mac, please install GNU sed.
