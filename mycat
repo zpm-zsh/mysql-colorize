@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
-	sed -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -R -M;
+	_SED=sed
 else
-    if [[ $OSTYPE == "freebsd"* || $OSTYPE == "darwin"* ]]; then
-		gsed -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -R -M; 
-    fi
+	_SED=gsed
 fi
 
-echo "$( dirname "${BASH_SOURCE[0]}" )"
+$_SED -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -R -M;
+
