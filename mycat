@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [[ $OSTYPE == "linux-gnu" ]]; then
-	_SED=sed
-else
+if command -v gsed >/dev/null 2>&1; then
 	_SED=gsed
+else
+	_SED=sed
 fi
 
-$_SED -f "$( dirname "${BASH_SOURCE[0]}" )"/mycat.sed | "$( dirname "${BASH_SOURCE[0]}" )"/grcat "$( dirname "${BASH_SOURCE[0]}" )"/mysql.grcat | less -S -X -F -M;
-
+DIR="$( dirname "${BASH_SOURCE[0]}" )"
+"$_SED" -f "$DIR/mycat.sed" | "$DIR/grcat" "$DIR/mysql.grcat" | less -S -X -F -M
